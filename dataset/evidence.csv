@@ -1,0 +1,62 @@
+evidence_id,evidence_type,description,submitted_date,case_id
+1,Customer Statement,Signed statement from the customer about transaction 240 (ref CS-99765).,2025-07-19,6
+2,Customer Statement,Recorded customer interview summary (ref CS-50728).,2025-08-08,8
+3,Merchant Report,Merchant order details including shipping address and contact data (ref MR-63170).,2025-08-19,8
+4,IP Address Log,IP geolocation report showing access from an unfamiliar region (ref IP-40665).,2025-08-28,6
+5,CCTV Footage,ATM camera footage from the time of the withdrawal attempts (ref CV-43957).,2025-09-11,10
+6,Customer Statement,Signed statement from the customer about transaction 450 (ref CS-30769).,2025-11-18,13
+7,SMS and OTP Delivery Log,OTP request and entry timeline around transaction 415 (ref SM-95971).,2025-12-06,11
+8,CCTV Footage,Branch camera still images requested from the ATM operator (ref CV-27278).,2025-12-10,7
+9,Bank Statement,Three-month statement supplied for pattern comparison (ref BS-11451).,2025-12-24,18
+10,Transaction Log,System log of the flagged transaction 450 and related account activity (ref TL-40838).,2025-12-31,13
+11,Device Fingerprint,Device fingerprint report indicating an unrecognised device (ref DF-15453).,2026-01-26,19
+12,Customer Statement,Recorded customer interview summary (ref CS-11677).,2026-01-31,19
+13,Bank Statement,Three-month statement supplied for pattern comparison (ref BS-95965).,2026-01-31,19
+14,UPI Transaction Record,UPI dispute log showing request and approval times (ref UP-73027).,2026-02-01,19
+15,Transaction Log,Extract of transaction logs covering transaction 562 and surrounding attempts (ref TL-34987).,2026-02-02,18
+16,IP Address Log,IP geolocation report showing access from an unfamiliar region (ref IP-99623).,2026-03-17,27
+17,UPI Transaction Record,UPI dispute log showing request and approval times (ref UP-13858).,2026-03-17,27
+18,UPI Transaction Record,UPI dispute log showing request and approval times (ref UP-25485).,2026-03-20,25
+19,Customer Statement,Recorded customer interview summary (ref CS-15883).,2026-03-23,22
+20,Device Fingerprint,Browser and device match analysis against registered devices (ref DF-17183).,2026-03-27,25
+21,Bank Statement,Three-month statement supplied for pattern comparison (ref BS-66843).,2026-03-30,32
+22,CCTV Footage,ATM camera footage from the time of the withdrawal attempts (ref CV-24563).,2026-04-09,20
+23,IP Address Log,Login and session IP addresses linked to transaction 707 (ref IP-90122).,2026-04-16,30
+24,Transaction Log,System log of the flagged transaction 590 and related account activity (ref TL-27644).,2026-04-19,20
+25,Transaction Log,Extract of transaction logs covering transaction 658 and surrounding attempts (ref TL-27131).,2026-04-21,25
+26,CCTV Footage,ATM camera footage from the time of the withdrawal attempts (ref CV-84430).,2026-04-22,33
+27,Merchant Report,Merchant dispute and chargeback report (ref MR-25747).,2026-04-26,29
+28,Merchant Report,Merchant order details including shipping address and contact data (ref MR-78530).,2026-05-06,26
+29,Customer Statement,Recorded customer interview summary (ref CS-89702).,2026-05-07,17
+30,UPI Transaction Record,UPI transaction record with payer and payee VPA details for transaction 733 (ref UP-42990).,2026-05-07,32
+31,Transaction Log,Extract of transaction logs covering transaction 771 and surrounding attempts (ref TL-35477).,2026-05-11,33
+32,Transaction Log,Extract of transaction logs covering transaction 765 and surrounding attempts (ref TL-82697).,2026-05-16,34
+33,UPI Transaction Record,UPI dispute log showing request and approval times (ref UP-94682).,2026-05-24,28
+34,Customer Statement,Recorded customer interview summary (ref CS-67877).,2026-06-02,12
+35,Transaction Log,Extract of transaction logs covering transaction 771 and surrounding attempts (ref TL-75943).,2026-06-10,33
+36,UPI Transaction Record,UPI dispute log showing request and approval times (ref UP-71746).,2026-06-12,33
+37,Transaction Log,System log of the flagged transaction 771 and related account activity (ref TL-26476).,2026-06-16,33
+38,CCTV Footage,ATM camera footage from the time of the withdrawal attempts (ref CV-20385).,2026-06-18,20
+39,Merchant Report,Merchant order details including shipping address and contact data (ref MR-20424).,2026-06-22,28
+40,KYC Document,KYC documents compared against the account application data (ref KY-69581).,2026-06-25,35
+41,CCTV Footage,Branch camera still images requested from the ATM operator (ref CV-25601).,2026-06-27,22
+42,KYC Document,KYC documents compared against the account application data (ref KY-82712).,2026-06-29,31
+43,Bank Statement,Three-month statement supplied for pattern comparison (ref BS-82743).,2026-07-02,34
+44,Customer Statement,Signed statement from the customer about transaction 36 (ref CS-76588).,2026-07-03,2
+45,IP Address Log,Login and session IP addresses linked to transaction 829 (ref IP-66752).,2026-07-08,35
+46,KYC Document,KYC documents compared against the account application data (ref KY-56388).,2026-07-12,26
+47,Customer Statement,Signed statement from the customer about transaction 233 (ref CS-64590).,2026-07-30,4
+48,IP Address Log,IP geolocation report showing access from an unfamiliar region (ref IP-61752).,2026-07-31,25
+49,Customer Statement,Recorded customer interview summary (ref CS-50901).,2026-07-31,32
+50,CCTV Footage,ATM camera footage from the time of the withdrawal attempts (ref CV-70893).,2026-08-04,37
+51,Merchant Report,Merchant order details including shipping address and contact data (ref MR-47926).,2026-08-10,35
+52,CCTV Footage,Branch camera still images requested from the ATM operator (ref CV-57325).,2026-08-20,20
+53,Merchant Report,Merchant dispute and chargeback report (ref MR-51320).,2026-08-21,28
+54,Transaction Log,Extract of transaction logs covering transaction 618 and surrounding attempts (ref TL-48014).,2026-08-22,21
+55,Transaction Log,Extract of transaction logs covering transaction 934 and surrounding attempts (ref TL-66266).,2026-08-26,38
+56,IP Address Log,Login and session IP addresses linked to transaction 414 (ref IP-14403).,2026-08-28,12
+57,CCTV Footage,Branch camera still images requested from the ATM operator (ref CV-33224).,2026-09-14,17
+58,CCTV Footage,Branch camera still images requested from the ATM operator (ref CV-70595).,2026-09-21,10
+59,Customer Statement,Signed statement from the customer about transaction 900 (ref CS-61951).,2026-09-24,37
+60,Customer Statement,Signed statement from the customer about transaction 541 (ref CS-56663).,2026-10-10,16
+61,Device Fingerprint,Browser and device match analysis against registered devices (ref DF-69297).,2026-10-11,38

@@ -1,0 +1,7 @@
+fraud_type_id,fraud_type_name,description,severity,department_id,is_active
+1,Unusual Transaction Amount,Transaction amount is unusually high compared with the account history,Low,1,true
+2,Rapid Transactions,Multiple transaction attempts occur within a short time window,Medium,1,true
+3,Repeated Failed Transactions,Repeated failed transaction attempts occur within a short time window,Medium,2,true
+4,Suspicious Withdrawal Pattern,Multiple withdrawal attempts occur within a short time window,High,1,true
+5,Potential Duplicate Transaction,A similar transaction is repeated within the configured time window,Low,3,true
+6,Multiple-Rule Violation,A single transaction triggers two or more individual detection rules,Critical,4,true

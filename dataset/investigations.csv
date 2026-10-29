@@ -1,0 +1,80 @@
+investigation_id,start_date,end_date,status,findings,alert_id,investigator_id
+1,2025-01-04,2025-02-11,Closed,The duplicate request came from a payment gateway retry. The customer confirmed a single intended payment and the duplicate was reversed. Investigation closed after supervisor review.,1,11
+2,2025-02-01,2025-02-18,Completed,"Confirmed a replayed payment request caused the duplicate debit. The beneficiary was reported and a refund of INR 14,964.42 was requested.",2,7
+3,2025-01-30,2025-03-27,Completed,"Confirmed a replayed payment request caused the duplicate debit. The beneficiary was reported and a refund of INR 14,964.42 was requested.",3,3
+4,2025-02-06,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",5,4
+5,2025-04-15,2025-05-17,Completed,"Customer could not be reached to confirm the activity (potential duplicate transaction). Indicators were weak, so the account was left under watch.",6,3
+6,2025-04-15,2025-06-13,Closed,"Findings inconclusive: only partial log data was available. No loss was confirmed, but the beneficiary was added to the watch list. Closed following final sign-off by the compliance team.",7,7
+7,2025-05-23,2025-06-03,Completed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal.,10,1
+8,2025-05-21,2025-07-17,Completed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found.,11,5
+9,2025-05-29,2025-08-02,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. Investigation closed after supervisor review.,12,12
+10,2025-06-03,2025-08-07,Completed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal.,13,9
+11,2025-06-05,2025-06-14,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,14,8
+12,2025-06-04,2025-07-24,Closed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal. Investigation closed after supervisor review.,15,9
+13,2025-07-20,2025-08-20,Completed,"Confirmed a replayed payment request caused the duplicate debit. The beneficiary was reported and a refund of INR 2,380.13 was requested.",16,11
+14,2025-07-18,2025-08-18,Completed,The duplicate request came from a payment gateway retry. The customer confirmed a single intended payment and the duplicate was reversed.,19,11
+15,2025-08-06,2025-08-21,Completed,"Confirmed a replayed payment request caused the duplicate debit. The beneficiary was reported and a refund of INR 1,983.37 was requested.",21,7
+16,2025-08-22,2025-10-05,Completed,Customer confirmed the repeated ATM attempts as genuine (small-denomination dispensing and card retries). Device and branch checks showed no fraud.,22,5
+17,2025-08-20,2025-09-10,Completed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator.,23,1
+18,2025-08-30,2025-11-08,Closed,The duplicate request came from a payment gateway retry. The customer confirmed a single intended payment and the duplicate was reversed. Closed following final sign-off by the compliance team.,24,3
+19,2025-09-22,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",25,3
+20,2025-10-01,2025-12-10,Closed,The duplicate request came from a payment gateway retry. The customer confirmed a single intended payment and the duplicate was reversed. File closed; no further action required.,27,7
+21,2025-10-04,2025-12-12,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. File closed; no further action required.,28,4
+22,2025-10-04,2025-11-27,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,29,8
+23,2025-10-24,2025-12-22,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,30,12
+24,2025-10-24,2025-12-09,Closed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found. Closed following final sign-off by the compliance team.,31,1
+25,2025-11-24,2025-12-12,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,35,4
+26,2025-11-28,2026-02-06,Closed,"Findings inconclusive: only partial log data was available. No loss was confirmed, but the beneficiary was added to the watch list. Investigation closed after supervisor review.",36,8
+27,2025-11-27,2025-12-24,Closed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found. File closed; no further action required.,37,5
+28,2025-12-04,,Ongoing,Customer contacted; awaiting a signed dispute form. Cross-checking the beneficiary against known watch lists.,38,9
+29,2025-12-05,2026-01-11,Completed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator.,39,9
+30,2025-12-07,2025-12-27,Completed,"Customer could not be reached to confirm the activity (suspicious withdrawal pattern). Indicators were weak, so the account was left under watch.",40,5
+31,2025-12-08,2026-01-28,Closed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator. Closed following final sign-off by the compliance team.,42,1
+32,2025-12-17,2026-01-29,Closed,"Findings inconclusive: only partial log data was available. No loss was confirmed, but the beneficiary was added to the watch list. Closed following final sign-off by the compliance team.",43,9
+33,2025-12-16,2026-02-16,Completed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator.,44,5
+34,2025-12-30,2026-01-20,Closed,"Customer confirmed the payment of INR 5,82,798.06 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found. File closed; no further action required.",45,1
+35,2026-01-03,2026-03-07,Closed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator. Closed following final sign-off by the compliance team.,46,5
+36,2025-12-31,2026-01-25,Completed,Customer confirmed the repeated ATM attempts as genuine (small-denomination dispensing and card retries). Device and branch checks showed no fraud.,47,1
+37,2026-01-05,2026-02-22,Completed,"Insufficient evidence to confirm fraud for multiple-rule violation. Merchant and device data could not be matched, and enhanced monitoring was placed on the account.",49,12
+38,2026-01-06,2026-02-13,Closed,"Customer confirmed the payment of INR 78,338.60 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found. Closed following final sign-off by the compliance team.",51,9
+39,2026-01-06,2026-02-08,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,52,12
+40,2026-01-16,2026-03-15,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,53,4
+41,2026-01-16,2026-03-12,Closed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator. File closed; no further action required.,54,5
+42,2026-01-22,2026-02-13,Completed,"Customer confirmed the payment of INR 1,22,249.08 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found.",55,9
+43,2026-01-22,2026-03-03,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,56,8
+44,2026-01-25,2026-03-08,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,60,8
+45,2026-01-25,2026-03-12,Closed,"Customer confirmed the payment of INR 41,479.81 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found. Investigation closed after supervisor review.",61,1
+46,2026-02-03,2026-03-19,Completed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal.,62,5
+47,2026-02-04,2026-04-13,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. File closed; no further action required.,63,12
+48,2026-02-12,2026-04-06,Closed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found. Investigation closed after supervisor review.,65,9
+49,2026-02-16,2026-04-14,Closed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found. Investigation closed after supervisor review.,67,1
+50,2026-02-19,2026-03-03,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,69,4
+51,2026-02-20,,Ongoing,Strong indicators of unauthorised activity (multiple-rule violation) found in the logs; case opened and the customer has been informed.,70,8
+52,2026-02-21,2026-03-23,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,72,4
+53,2026-02-23,2026-03-08,Completed,"Customer confirmed the payment of INR 4,58,425.83 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found.",73,5
+54,2026-02-28,2026-04-25,Completed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal.,74,1
+55,2026-03-03,2026-05-05,Completed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring.,76,12
+56,2026-03-05,2026-03-19,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. Closed following final sign-off by the compliance team.,77,8
+57,2026-03-05,2026-05-01,Closed,"Confirmed an unauthorised high-value payment of INR 2,32,682.68; the customer did not initiate it. Account secured, credentials reset and recovery started. Investigation closed after supervisor review.",78,9
+58,2026-03-14,2026-05-12,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. File closed; no further action required.,79,12
+59,2026-04-02,2026-05-04,Completed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal.,80,9
+60,2026-04-10,,Ongoing,Initial review of the unusual transaction amount alert is under way; merchant records and IP logs requested from the payment processor.,81,5
+61,2026-04-13,2026-05-28,Closed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator. Investigation closed after supervisor review.,82,1
+62,2026-04-12,2026-06-20,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. Closed following final sign-off by the compliance team.,83,4
+63,2026-05-07,2026-06-13,Completed,"Customer confirmed the payment of INR 5,900.40 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found.",89,5
+64,2026-05-12,2026-06-09,Completed,"Customer confirmed the payment of INR 4,00,670.07 as genuine (a planned purchase). The alert was caused by the amount rule only; no fraud indicators were found.",90,9
+65,2026-05-27,,Ongoing,,91,1
+66,2026-06-03,2026-08-10,Closed,Confirmed rapid-fire unauthorised payments; device and IP records did not match the account holder. Card or UPI handle blocked and a complaint registered on the cybercrime portal. Investigation closed after supervisor review.,92,5
+67,2026-06-04,2026-08-05,Closed,Confirmed coordinated fraud that triggered several detection rules at once. Funds recall requested from the receiving bank and the account placed under enhanced monitoring. Investigation closed after supervisor review.,93,12
+68,2026-06-07,2026-06-20,Completed,Customer confirmed the quick succession of payments as genuine (several purchases at one merchant counter). No fraud indicators were found.,95,9
+69,2026-06-21,2026-08-18,Closed,Customer confirmed the burst of activity as genuine (retries after payment gateway errors). No fraud indicators were found. File closed; no further action required.,97,8
+70,2026-07-19,2026-08-20,Closed,Confirmed unauthorised ATM withdrawals using cloned card details. Card blocked and reissued; CCTV footage requested from the ATM operator. File closed; no further action required.,98,1
+71,2026-07-27,,Ongoing,Strong indicators of unauthorised activity (suspicious withdrawal pattern) found in the logs; case opened and the customer has been informed.,100,1
+72,2026-08-08,2026-09-01,Closed,The duplicate request came from a payment gateway retry. The customer confirmed a single intended payment and the duplicate was reversed. Investigation closed after supervisor review.,101,11
+73,2026-08-19,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",102,4
+74,2026-08-16,,Ongoing,Preliminary findings indicate probable fraud (multiple-rule violation). A formal case has been opened while records are still being collected.,103,12
+75,2026-08-18,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",105,7
+76,2026-10-09,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",108,9
+77,2026-10-13,,Ongoing,Initial review of the rapid transactions alert is under way; merchant records and IP logs requested from the payment processor.,109,5
+78,2026-10-12,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",110,5
+79,2026-10-13,,Ongoing,"Interim notes: transaction logs collected, awaiting the customer statement and device records.",111,9

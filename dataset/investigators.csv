@@ -1,0 +1,13 @@
+investigator_id,name,email,phone,department_id,experience_year
+1,Deepika Srivastava,deepika.srivastava@example.test,9.16197E+11,1,13
+2,Rutuja Deshmukh,rutuja.deshmukh@example.test,9.16089E+11,2,19
+3,Sourav Ghosh,sourav.ghosh@example.test,9.17434E+11,3,18
+4,Akhil Menon,akhil.menon@example.test,9.16267E+11,4,18
+5,Naveen Pillai,naveen.pillai@example.test,9.19739E+11,1,10
+6,Gurpreet Kaur,gurpreet.kaur@example.test,9.16266E+11,2,9
+7,Moumita Chatterjee,moumita.chatterjee@example.test,9.1686E+11,3,8
+8,Darshan Acharya,darshan.acharya@example.test,9.19798E+11,4,21
+9,Meenakshi Iyer,meenakshi.iyer@example.test,9.16987E+11,1,15
+10,Tanmoy Mukherjee,tanmoy.mukherjee@example.test,9.17746E+11,2,11
+11,Divya Subramanian,divya.subramanian@example.test,9.18341E+11,3,20
+12,Swapnil Joshi,swapnil.joshi@example.test,9.19409E+11,4,21

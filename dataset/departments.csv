@@ -1,0 +1,5 @@
+department_id,department_name,description
+1,Transaction Monitoring,Monitors suspicious transactions
+2,Account Security,Investigates account security issues
+3,Payment Operations,Reviews payment and duplicate transactions
+4,Fraud Investigation,Handles complex and multiple-rule alerts

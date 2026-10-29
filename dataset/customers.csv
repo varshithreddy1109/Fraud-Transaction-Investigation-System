@@ -1,0 +1,101 @@
+customer_id,name,address,phone,date_of_birth,email,created_at
+1,Harini Iyer,"No. 193, 5th Cross Road, Marine Drive, Kochi, Kerala - 682035",+916004063434,1958-01-01,harini.iyer1@example.test,2018-06-29T08:27:25
+2,Aravind Krishnan,"12/34, Ashoka Court, Vijay Nagar, Indore, Madhya Pradesh - 452006",+918230476502,1994-07-19,aravind.krishnan2@example.test,2021-04-09T15:50:29
+3,Neha Gupta,"Flat 538, Krishna Towers, Gandhi Road, Banjara Hills, Hyderabad, Telangana - 500061",+919930378450,2004-03-04,neha.gupta3@example.test,2021-07-22T17:28:18
+4,Rahul Tiwari,"Flat 1112, Sai Krupa, 1st Avenue, Patamata, Vijayawada, Andhra Pradesh - 520009",+917358182523,1971-08-02,rahul.tiwari4@example.test,2018-06-19T03:06:57
+5,Rutuja Gowda,"No. 60, 2nd Main Road, Edappally, Kochi, Kerala - 682001",+916282433940,1979-09-05,rutuja.gowda5@example.test,2019-03-27T18:22:40
+6,Mansi Parekh,"Flat 809, Tulsi Villa, Gandhi Road, Vijayanagar, Mysuru, Karnataka - 570023",+918615968426,1978-03-12,mansi.parekh6@example.test,2023-06-12T17:46:53
+7,Rahul Verma,"Flat 398, Orchid Residency, Church Street, Banjara Hills, Hyderabad, Telangana - 500062",+916766618268,1995-03-26,rahul.verma7@example.test,2020-08-22T14:32:52
+8,Debashree Bose,"Flat 577, Orchid Residency, Nehru Street, Whitefield, Bengaluru, Karnataka - 560086",+917597437034,1951-10-04,debashree.bose8@example.test,2019-05-24T13:56:00
+9,Praneeth Sharma,"No. 167, Church Street, Jaydev Vihar, Bhubaneswar, Odisha - 751004",+917842018878,2004-06-12,praneeth.sharma9@example.test,2024-08-14T11:03:50
+10,Moumita Mukherjee,"11/14, Gayatri Complex, Juhu, Mumbai, Maharashtra - 400052",+918489401262,1990-08-23,moumita.mukherjee10@example.test,2022-05-15T23:08:06
+11,Jignesh Thakkar,"Flat 970, Orchid Residency, Ambedkar Road, Pattom, Thiruvananthapuram, Kerala - 695005",+916642196358,1982-05-01,jignesh.thakkar11@example.test,2021-11-21T00:26:41
+12,Sneha Thakkar,"18/28, Sri Sai Residency, Jagatpura, Jaipur, Rajasthan - 302036",+917462768980,1972-11-01,sneha.thakkar12@example.test,2023-08-13T09:20:56
+13,Sayali Pawar,"No. 196, Church Street, C-Scheme, Jaipur, Rajasthan - 302031",+918668623442,1953-01-28,sayali.pawar13@example.test,2020-06-27T15:25:10
+14,Sreejith Menon,"Flat 885, Gayatri Complex, Lake View Road, Kadri, Mangaluru, Karnataka - 575017",+918394406108,1970-07-15,sreejith.menon14@example.test,2024-05-05T02:58:56
+15,Sneha Acharya,"Flat 337, Krishna Towers, Church Street, Moghalrajpuram, Vijayawada, Andhra Pradesh - 520007",+917875289657,1969-02-04,sneha.acharya15@example.test,2023-02-12T00:59:50
+16,Aditya Kulkarni,"No. 204, Patel Nagar Main Road, Rushikonda, Visakhapatnam, Andhra Pradesh - 530034",+918316608104,1978-11-17,aditya.kulkarni16@example.test,2022-05-18T02:55:57
+17,Amit Gupta,"Flat 1031, Ashoka Court, Temple Road, Viman Nagar, Pune, Maharashtra - 411044",+917169075586,2002-10-28,amit.gupta17@example.test,2021-08-17T00:39:37
+18,Aswathy Nair,"Flat 1057, Rajeshwari Nilayam, Ring Road, Alipiri Road, Tirupati, Andhra Pradesh - 517502",+919004447628,1972-12-18,aswathy.nair18@example.test,2024-06-13T08:53:24
+19,Rahul Bhosale,"Flat 1180, Ganga Apartments, 1st Avenue, Pattom, Thiruvananthapuram, Kerala - 695038",+917191052479,1970-12-06,rahul.bhosale19@example.test,2025-04-10T19:47:38
+20,Pranav Bhosale,"Flat 286, Lakshmi Nivas, Market Road, Tilak Road, Tirupati, Andhra Pradesh - 517501",+919150099963,1970-09-13,pranav.bhosale20@example.test,2023-12-11T12:31:42
+21,Ananya Deshmukh,"No. 250, Tagore Road, Benz Circle, Vijayawada, Andhra Pradesh - 520008",+917822966747,1953-04-07,ananya.deshmukh21@example.test,2024-04-29T03:13:01
+22,Parth Shah,"Flat 986, Sri Sai Residency, Temple Road, Saket Nagar, Indore, Madhya Pradesh - 452014",+916277172445,2001-07-24,parth.shah22@example.test,2021-04-13T14:05:09
+23,Kavya Tilak,"Flat 754, Sunrise Heights, Market Road, Mansarovar, Jaipur, Rajasthan - 302009",+917565161924,2004-04-02,kavya.tilak23@example.test,2020-09-22T03:25:14
+24,Murugan Iyer,"Flat 1057, Rajeshwari Nilayam, Ambedkar Road, Kankanady, Mangaluru, Karnataka - 575023",+916133554840,1962-10-08,murugan.iyer24@example.test,2020-12-02T02:20:07
+25,Girish Gowda,"32/13, Tulsi Villa, Madhurawada, Visakhapatnam, Andhra Pradesh - 530022",+919060862529,1975-07-29,girish.gowda25@example.test,2023-05-04T09:00:16
+26,Vishnu Kurup,"No. 122, 2nd Main Road, Maninagar, Ahmedabad, Gujarat - 380054",+916175138057,1970-12-14,vishnu.kurup26@example.test,2020-08-31T19:56:09
+27,Aditya Jadhav,"Flat 509, Tulsi Villa, Patel Nagar Main Road, Vijay Nagar, Indore, Madhya Pradesh - 452016",+918882835917,1989-12-26,aditya.jadhav27@example.test,2022-03-14T14:21:42
+28,Rupam Das,"61/31, Shanti Nilayam, Peroorkada, Thiruvananthapuram, Kerala - 695033",+916407143351,1962-07-02,rupam.das28@example.test,2019-12-04T05:47:38
+29,Vignesh Iyengar,"No. 111, 2nd Main Road, Gomti Nagar, Lucknow, Uttar Pradesh - 226012",+917871567390,1972-12-13,vignesh.iyengar29@example.test,2022-05-30T10:22:45
+30,Karthik Pillai,"65/34, Gayatri Complex, Navrangpura, Ahmedabad, Gujarat - 380061",+916157860645,1969-08-30,karthik.pillai30@example.test,2022-05-31T12:30:51
+31,Praneeth Goud,"16/30, Krishna Towers, Rajouri Garden, New Delhi, Delhi - 110064",+918539839366,1990-04-11,praneeth.goud31@example.test,2020-11-20T11:34:34
+32,Shreya Patil,"79/10, Harmony Heights, Park Street, Kolkata, West Bengal - 700040",+918877304855,1958-07-29,shreya.patil32@example.test,2023-06-25T23:50:15
+33,Chirag Trivedi,"51/1, Sai Krupa, Peroorkada, Thiruvananthapuram, Kerala - 695025",+917495500155,1996-05-17,chirag.trivedi33@example.test,2018-03-08T03:21:51
+34,Spoorthi Kamath,"Flat 651, Krishna Towers, 5th Cross Road, Kazhakoottam, Thiruvananthapuram, Kerala - 695022",+917241150693,1955-10-04,spoorthi.kamath34@example.test,2024-07-30T19:56:58
+35,Aswathy Pillai,"No. 92, 1st Avenue, Urwa, Mangaluru, Karnataka - 575012",+916704235632,1986-03-13,aswathy.pillai35@example.test,2019-10-30T04:58:43
+36,Omkar Deshmukh,"Flat 1148, Gayatri Complex, Subhash Marg, Hebbal, Mysuru, Karnataka - 570002",+916698063506,1979-06-22,omkar.deshmukh36@example.test,2021-08-07T07:10:05
+37,Aswathy Namboothiri,"85/8, Vinayaka Arcade, Chandrasekharpur, Bhubaneswar, Odisha - 751013",+916753913859,1991-12-23,aswathy.namboothiri37@example.test,2021-07-31T07:54:58
+38,Kinjal Gandhi,"Flat 1170, Sai Krupa, Raja Street, Jayanagar, Bengaluru, Karnataka - 560031",+916475007091,1976-04-01,kinjal.gandhi38@example.test,2020-08-17T20:28:24
+39,Saurabh Kulkarni,"Flat 240, Ganga Apartments, Ambedkar Road, Dwaraka Nagar, Visakhapatnam, Andhra Pradesh - 530015",+919365808513,1997-10-09,saurabh.kulkarni39@example.test,2023-11-21T06:17:41
+40,Tarun Chopra,"96/30, Vinayaka Arcade, C-Scheme, Jaipur, Rajasthan - 302027",+919176706541,1960-04-30,tarun.chopra40@example.test,2020-02-03T19:23:37
+41,Aravind Chandrasekar,"Flat 805, Green Park Apartments, Patel Nagar Main Road, Juhu, Mumbai, Maharashtra - 400069",+918043550607,1957-04-19,aravind.chandrasekar41@example.test,2024-07-23T05:51:10
+42,Athira Sidhu,"Flat 490, Gayatri Complex, Temple Road, T Nagar, Chennai, Tamil Nadu - 600083",+916048353845,2001-04-12,athira.sidhu42@example.test,2024-03-09T22:21:27
+43,Sukhdeep Rao,"No. 143, Temple Road, Sudama Nagar, Indore, Madhya Pradesh - 452011",+916000871458,1999-07-12,sukhdeep.rao43@example.test,2018-03-28T11:15:19
+44,Kriti Sidhu,"No. 81, Raja Street, Lajpat Nagar, New Delhi, Delhi - 110053",+917829670828,1992-07-22,kriti.sidhu44@example.test,2018-06-04T06:43:09
+45,Moumita Das,"48/36, Ashoka Court, Rushikonda, Visakhapatnam, Andhra Pradesh - 530024",+919933256331,1980-04-27,moumita.das45@example.test,2019-06-03T19:31:20
+46,Parth Patel,"Flat 890, Sunrise Heights, 2nd Main Road, Lalbagh, Mangaluru, Karnataka - 575023",+919177120567,1978-02-08,parth.patel46@example.test,2018-10-23T18:33:03
+47,Devika Menon,"Flat 842, Lakshmi Nivas, Lake View Road, Singanallur, Coimbatore, Tamil Nadu - 641006",+919603255786,1956-05-26,devika.menon47@example.test,2021-04-27T11:37:14
+48,Simran Raju,"No. 104, 2nd Main Road, Kukatpally, Hyderabad, Telangana - 500092",+918848787047,1974-07-06,simran.raju48@example.test,2023-08-11T02:53:24
+49,Sneha Patel,"No. 80, Station Road, Adyar, Chennai, Tamil Nadu - 600013",+917393589163,1966-11-01,sneha.patel49@example.test,2024-04-05T07:08:01
+50,Darshan Kamath,"72/15, Vinayaka Arcade, Andheri West, Mumbai, Maharashtra - 400068",+916250589661,1983-08-25,darshan.kamath50@example.test,2018-04-16T12:38:14
+51,Rohit Sharma,"No. 18, Ambedkar Road, Baner, Pune, Maharashtra - 411029",+916624522457,2000-05-10,rohit.sharma51@example.test,2018-10-26T16:22:04
+52,Arjun Warrier,"Flat 224, Balaji Enclave, 1st Avenue, Marine Drive, Kochi, Kerala - 682010",+916521420956,1979-05-31,arjun.warrier52@example.test,2025-02-11T15:18:50
+53,Dhanush Iyer,"No. 93, Market Road, Salt Lake, Kolkata, West Bengal - 700051",+917897331724,1974-03-26,dhanush.iyer53@example.test,2023-06-22T05:03:10
+54,Moumita Banerjee,"No. 63, Gandhi Road, Siripuram, Visakhapatnam, Andhra Pradesh - 530023",+919814952716,1969-10-13,moumita.banerjee54@example.test,2025-04-04T13:47:23
+55,Varshith Reddy,"18/32, Tulsi Villa, Jayalakshmipuram, Mysuru, Karnataka - 570028",+916961558736,1982-10-25,varshith.reddy55@example.test,2025-06-20T17:39:15
+56,Simran Kaur,"35/7, Orchid Residency, Velachery, Chennai, Tamil Nadu - 600058",+918995310148,1957-10-28,simran.kaur56@example.test,2025-06-10T15:59:01
+57,Amandeep Gill,"25/20, Rajeshwari Nilayam, Gachibowli, Hyderabad, Telangana - 500085",+916735606410,1978-07-23,amandeep.gill57@example.test,2018-10-18T07:45:45
+58,Kriti Srivastava,"No. 231, Patel Nagar Main Road, Saket, New Delhi, Delhi - 110061",+919178005164,1965-09-01,kriti.srivastava58@example.test,2022-07-25T16:13:25
+59,Amit Pandey,"Flat 1099, Sri Sai Residency, 5th Cross Road, Singanallur, Coimbatore, Tamil Nadu - 641017",+919105727136,1984-02-27,amit.pandey59@example.test,2025-06-14T21:48:25
+60,Gopika Pillai,"83/28, Green Park Apartments, Saheed Nagar, Bhubaneswar, Odisha - 751010",+916768370808,1960-03-18,gopika.pillai60@example.test,2022-07-01T11:33:49
+61,Tejas Kulkarni,"75/11, Sunrise Heights, Basavanagudi, Bengaluru, Karnataka - 560096",+916258272808,1992-06-04,tejas.kulkarni61@example.test,2023-08-15T20:38:45
+62,Pranav Joshi,"Flat 822, Rajeshwari Nilayam, 2nd Main Road, Patamata, Vijayawada, Andhra Pradesh - 520006",+919077384951,1981-03-27,pranav.joshi62@example.test,2022-01-23T21:33:38
+63,Vishnu Varghese,"No. 169, Ring Road, Shivajinagar, Pune, Maharashtra - 411018",+918045201690,1979-12-08,vishnu.varghese63@example.test,2019-03-19T09:32:42
+64,Harleen Sandhu,"No. 196, Subhash Marg, Juhu, Mumbai, Maharashtra - 400031",+919689494970,1967-03-17,harleen.sandhu64@example.test,2025-06-07T14:18:25
+65,Manjunath Hegde,"17/35, Sunrise Heights, Jagatpura, Jaipur, Rajasthan - 302029",+916272031770,1967-04-04,manjunath.hegde65@example.test,2020-03-23T23:13:34
+66,Kirandeep Singh,"Flat 388, Krishna Towers, Church Street, New Town, Kolkata, West Bengal - 700092",+917998523907,1966-04-07,kirandeep.singh66@example.test,2018-12-19T05:36:29
+67,Sudipta Mukherjee,"99/11, Krishna Towers, Indira Nagar, Lucknow, Uttar Pradesh - 226001",+918630021193,1997-11-12,sudipta.mukherjee67@example.test,2022-10-03T03:14:46
+68,Darshan Shetty,"91/34, Rajeshwari Nilayam, Velachery, Chennai, Tamil Nadu - 600034",+916811812692,1954-02-02,darshan.shetty68@example.test,2020-03-03T09:36:29
+69,Dhruv Shetty,"Flat 248, Green Park Apartments, Ring Road, Jayanagar, Bengaluru, Karnataka - 560085",+916727077299,2002-04-09,dhruv.shetty69@example.test,2021-09-25T01:27:29
+70,Tarun Menon,"Flat 1028, Gayatri Complex, Nehru Street, Madhapur, Hyderabad, Telangana - 500086",+919969572635,1977-03-05,tarun.menon70@example.test,2018-09-12T05:36:47
+71,Subhajit Dutta,"76/23, Shanti Nilayam, Edappally, Kochi, Kerala - 682027",+918682288236,1976-02-04,subhajit.dutta71@example.test,2021-11-22T03:51:06
+72,Arjun Dutta,"No. 70, Patel Nagar Main Road, Viman Nagar, Pune, Maharashtra - 411043",+919478434171,1977-04-13,arjun.dutta72@example.test,2021-09-02T07:08:26
+73,Debashree Das,"74/11, Green Park Apartments, Juhu, Mumbai, Maharashtra - 400023",+918976999803,1988-11-14,debashree.das73@example.test,2018-09-26T09:39:24
+74,Pooja Chauhan,"No. 129, Nehru Street, Khandagiri, Bhubaneswar, Odisha - 751026",+917625076616,1995-03-19,pooja.chauhan74@example.test,2019-06-30T20:48:16
+75,Kirandeep Bajwa,"Flat 574, Krishna Towers, Ambedkar Road, Ballygunge, Kolkata, West Bengal - 700002",+916417841509,1954-01-16,kirandeep.bajwa75@example.test,2023-10-28T02:00:05
+76,Ananya Sharma,"No. 87, 2nd Main Road, Bopal, Ahmedabad, Gujarat - 380036",+918092947494,1983-12-08,ananya.sharma76@example.test,2019-04-11T00:58:23
+77,Shreya Parekh,"No. 89, Tagore Road, Hadapsar, Pune, Maharashtra - 411030",+918847076623,1983-11-12,shreya.parekh77@example.test,2025-02-25T17:19:34
+78,Jaspreet Gill,"88/33, Balaji Enclave, Vadavalli, Coimbatore, Tamil Nadu - 641040",+918763125777,1992-10-30,jaspreet.gill78@example.test,2019-08-31T10:37:32
+79,Moumita Gowda,"Flat 1030, Rajeshwari Nilayam, 5th Cross Road, Ballygunge, Kolkata, West Bengal - 700021",+916330673991,1990-04-23,moumita.gowda79@example.test,2023-04-26T16:29:56
+80,Jaspreet Sidhu,"No. 153, Station Road, Air Bypass Road, Tirupati, Andhra Pradesh - 517507",+918685334324,1975-10-06,jaspreet.sidhu80@example.test,2023-04-04T16:12:04
+81,Tanmoy Chatterjee,"Flat 845, Rajeshwari Nilayam, Lake View Road, Aminabad, Lucknow, Uttar Pradesh - 226003",+919804858360,1976-01-26,tanmoy.chatterjee81@example.test,2023-04-27T12:30:51
+82,Venkatesh Naidu,"No. 212, Raja Street, Edappally, Kochi, Kerala - 682022",+917696376497,2001-04-26,venkatesh.naidu82@example.test,2022-08-10T22:05:52
+83,Riddhi Mehta,"62/38, Ganga Apartments, Lajpat Nagar, New Delhi, Delhi - 110082",+917942308224,1994-10-22,riddhi.mehta83@example.test,2022-05-07T17:12:52
+84,Dhanush Tilak,"26/26, Balaji Enclave, KT Road, Tirupati, Andhra Pradesh - 517505",+918717891627,1987-02-22,dhanush.tilak84@example.test,2020-04-16T08:59:19
+85,Sudipta Banerjee,"No. 56, Raja Street, Anna Nagar, Chennai, Tamil Nadu - 600035",+917911924573,1996-08-27,sudipta.banerjee85@example.test,2024-05-07T04:55:42
+86,Kavya Reddy,"Flat 1058, Ashoka Court, Market Road, Kuvempunagar, Mysuru, Karnataka - 570027",+918603674713,1994-11-23,kavya.reddy86@example.test,2020-11-19T19:40:16
+87,Parth Thakkar,"Flat 1155, Sunrise Heights, 1st Avenue, Lajpat Nagar, New Delhi, Delhi - 110017",+919521975121,1953-03-27,parth.thakkar87@example.test,2018-07-16T20:11:29
+88,Akhil Namboothiri,"Flat 1087, Shanti Nilayam, 2nd Main Road, Gomti Nagar, Lucknow, Uttar Pradesh - 226011",+917278050941,1951-06-13,akhil.namboothiri88@example.test,2021-01-05T23:32:38
+89,Navneet Arora,"No. 71, Church Street, Tilak Road, Tirupati, Andhra Pradesh - 517505",+918729683271,1986-09-18,navneet.arora89@example.test,2023-06-21T09:07:18
+90,Sukhdeep Bajwa,"Flat 418, Rajeshwari Nilayam, Lake View Road, Bogadi, Mysuru, Karnataka - 570007",+916724658223,2000-10-08,sukhdeep.bajwa90@example.test,2018-10-25T22:28:15
+91,Sneha Mehta,"Flat 464, Sai Krupa, 5th Cross Road, Whitefield, Bengaluru, Karnataka - 560096",+919016440618,1996-12-06,sneha.mehta91@example.test,2019-04-08T00:40:55
+92,Subhajit Bose,"2/16, Tulsi Villa, Benz Circle, Vijayawada, Andhra Pradesh - 520010",+918585606212,1997-11-08,subhajit.bose92@example.test,2018-07-21T05:21:04
+93,Vignesh Pillai,"91/11, Krishna Towers, Kadri, Mangaluru, Karnataka - 575018",+919555469264,2001-07-02,vignesh.pillai93@example.test,2022-09-24T18:48:07
+94,Sukhdeep Banerjee,"No. 7, Temple Road, Paldi, Ahmedabad, Gujarat - 380025",+917460568085,1966-07-09,sukhdeep.banerjee94@example.test,2023-04-11T10:56:05
+95,Kinjal Trivedi,"No. 200, Lake View Road, Sudama Nagar, Indore, Madhya Pradesh - 452002",+916690894132,1993-06-08,kinjal.trivedi95@example.test,2020-12-09T23:38:27
+96,Priya Iyer,"Flat 791, Krishna Towers, Raja Street, Peelamedu, Coimbatore, Tamil Nadu - 641032",+916399738174,1961-06-29,priya.iyer96@example.test,2018-07-31T18:40:49
+97,Arjun Nair,"27/23, Vinayaka Arcade, Maninagar, Ahmedabad, Gujarat - 380054",+916295203151,1979-05-24,arjun.nair97@example.test,2022-05-27T19:17:06
+98,Rupam Bose,"No. 141, Patel Nagar Main Road, Hazratganj, Lucknow, Uttar Pradesh - 226013",+917941367727,1983-05-11,rupam.bose98@example.test,2019-10-27T06:38:12
+99,Manoj Reddy,"3/21, Krishna Towers, Gandhipuram, Coimbatore, Tamil Nadu - 641001",+917050832603,1981-03-08,manoj.reddy99@example.test,2021-06-18T02:28:57
+100,Harika Rao,"Flat 873, Ashoka Court, Raja Street, Saheed Nagar, Bhubaneswar, Odisha - 751025",+919791655797,1988-09-21,harika.rao100@example.test,2021-12-28T09:44:05

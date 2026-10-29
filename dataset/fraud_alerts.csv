@@ -1,0 +1,112 @@
+alert_id,reason,severity,status,alert_date,transaction_id,fraud_type_id
+1,Potential Duplicate Transaction: same type and amount as transaction 2 repeated after 9 seconds (window 30 seconds),Low,Dismissed,2025-01-01T20:13:15,3,5
+2,Potential Duplicate Transaction: same type and amount as transaction 35 repeated after 7 seconds (window 30 seconds),Low,Resolved,2025-01-30T06:21:58,36,5
+3,Potential Duplicate Transaction: same type and amount as transaction 36 repeated after 8 seconds (window 30 seconds),Low,Resolved,2025-01-30T06:24:42,37,5
+4,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Open,2025-02-03T15:41:57,48,2
+5,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Under Review,2025-02-03T15:43:02,49,6
+6,Potential Duplicate Transaction: same type and amount as transaction 157 repeated after 6 seconds (window 30 seconds),Low,Resolved,2025-04-13T10:02:14,158,5
+7,Potential Duplicate Transaction: same type and amount as transaction 158 repeated after 9 seconds (window 30 seconds),Low,Dismissed,2025-04-13T10:04:38,159,5
+8,Potential Duplicate Transaction: same type and amount as transaction 176 repeated after 9 seconds (window 30 seconds),Low,Dismissed,2025-04-25T01:52:26,177,5
+9,Potential Duplicate Transaction: same type and amount as transaction 175 repeated after 10 seconds (window 30 seconds),Low,Dismissed,2025-04-25T01:54:27,176,5
+10,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2025-05-21T06:58:48,210,2
+11,Rapid Transactions: 5 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2025-05-21T07:01:16,211,2
+12,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2025-05-26T16:22:03,222,6
+13,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2025-06-03T04:30:15,233,2
+14,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Resolved,2025-06-03T04:32:20,234,6
+15,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2025-06-04T15:32:57,240,2
+16,Potential Duplicate Transaction: same type and amount as transaction 309 repeated after 11 seconds (window 30 seconds),Low,Resolved,2025-07-17T11:02:31,310,5
+17,Potential Duplicate Transaction: same type and amount as transaction 308 repeated after 7 seconds (window 30 seconds),Low,Dismissed,2025-07-17T11:02:37,309,5
+18,Potential Duplicate Transaction: same type and amount as transaction 312 repeated after 7 seconds (window 30 seconds),Low,Dismissed,2025-07-17T21:53:34,313,5
+19,Potential Duplicate Transaction: same type and amount as transaction 311 repeated after 8 seconds (window 30 seconds),Low,Dismissed,2025-07-17T21:55:11,312,5
+20,Potential Duplicate Transaction: same type and amount as transaction 322 repeated after 9 seconds (window 30 seconds),Low,Open,2025-07-27T10:04:34,323,5
+21,Potential Duplicate Transaction: same type and amount as transaction 336 repeated after 6 seconds (window 30 seconds),Low,Resolved,2025-08-03T19:45:39,337,5
+22,Suspicious Withdrawal Pattern: 6 ATM withdrawal attempts within 10 minutes (threshold 5),High,Dismissed,2025-08-20T18:25:46,357,4
+23,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-08-20T18:25:54,356,4
+24,Potential Duplicate Transaction: same type and amount as transaction 368 repeated after 11 seconds (window 30 seconds),Low,Dismissed,2025-08-28T11:24:35,369,5
+25,Potential Duplicate Transaction: same type and amount as transaction 397 repeated after 12 seconds (window 30 seconds),Low,Under Review,2025-09-20T15:20:29,398,5
+26,Potential Duplicate Transaction: same type and amount as transaction 406 repeated after 12 seconds (window 30 seconds),Low,Open,2025-09-28T23:20:10,407,5
+27,Potential Duplicate Transaction: same type and amount as transaction 405 repeated after 5 seconds (window 30 seconds),Low,Dismissed,2025-09-28T23:20:20,406,5
+28,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 5 failed in 60s (min 4),Critical,Resolved,2025-10-01T12:23:02,415,6
+29,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2025-10-01T12:25:15,414,6
+30,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Resolved,2025-10-21T13:26:48,450,6
+31,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2025-10-21T13:26:49,449,2
+32,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Open,2025-10-29T06:15:14,463,2
+33,Potential Duplicate Transaction: same type and amount as transaction 499 repeated after 5 seconds (window 30 seconds),Low,Dismissed,2025-11-18T07:02:29,500,5
+34,Potential Duplicate Transaction: same type and amount as transaction 498 repeated after 9 seconds (window 30 seconds),Low,Open,2025-11-18T07:03:00,499,5
+35,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2025-11-22T12:51:11,506,6
+36,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Dismissed,2025-11-26T23:15:04,516,6
+37,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2025-11-26T23:16:26,515,2
+38,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Under Review,2025-12-01T01:36:57,530,4
+39,Suspicious Withdrawal Pattern: 6 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-12-05T00:32:04,541,4
+40,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-12-05T00:33:18,540,4
+41,Potential Duplicate Transaction: same type and amount as transaction 544 repeated after 10 seconds (window 30 seconds),Low,Open,2025-12-07T02:11:40,545,5
+42,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-12-08T13:28:13,550,4
+43,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Dismissed,2025-12-14T21:16:28,561,4
+44,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-12-14T21:20:04,562,4
+45,"Unusual Transaction Amount: INR 5,82,798.06 is 9.2x the average INR 63,381.77 of 16 previous completed transactions (threshold 5x)",Low,Dismissed,2025-12-28T11:58:14,581,1
+46,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2025-12-31T02:50:18,590,4
+47,Suspicious Withdrawal Pattern: 6 ATM withdrawal attempts within 10 minutes (threshold 5),High,Dismissed,2025-12-31T02:54:04,591,4
+48,"Unusual Transaction Amount: INR 3,75,530.13 is 7.5x the average INR 50,091.81 of 15 previous completed transactions (threshold 5x)",Low,Open,2026-01-03T14:34:47,597,1
+49,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 7.5x the average of 15 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 597 after 15s (window 30s),Critical,Dismissed,2026-01-03T14:35:42,598,6
+50,"Unusual Transaction Amount: INR 8,522.85 is 7.9x the average INR 1,076.84 of 14 previous completed transactions (threshold 5x)",Low,Open,2026-01-04T18:17:25,600,1
+51,"Unusual Transaction Amount: INR 78,338.60 is 9.9x the average INR 7,932.49 of 17 previous completed transactions (threshold 5x)",Low,Dismissed,2026-01-06T15:11:54,604,1
+52,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 9.9x the average of 17 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 604 after 6s (window 30s),Critical,Resolved,2026-01-06T15:14:59,605,6
+53,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2026-01-13T05:01:09,618,6
+54,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2026-01-15T02:01:15,625,4
+55,"Unusual Transaction Amount: INR 1,22,249.08 is 9.7x the average INR 12,578.89 of 15 previous completed transactions (threshold 5x)",Low,Dismissed,2026-01-19T17:57:42,632,1
+56,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 9.7x the average of 15 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 632 after 18s (window 30s),Critical,Resolved,2026-01-19T18:00:27,633,6
+57,Potential Duplicate Transaction: same type and amount as transaction 636 repeated after 8 seconds (window 30 seconds),Low,Open,2026-01-22T04:25:37,637,5
+58,Potential Duplicate Transaction: same type and amount as transaction 637 repeated after 9 seconds (window 30 seconds),Low,Dismissed,2026-01-22T04:29:14,638,5
+59,"Unusual Transaction Amount: INR 2,55,493.95 is 10.5x the average INR 24,275.09 of 17 previous completed transactions (threshold 5x)",Low,Open,2026-01-24T19:54:32,639,1
+60,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 5.9x the average of 17 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 640 after 12s (window 30s),Critical,Resolved,2026-01-25T10:22:57,641,6
+61,"Unusual Transaction Amount: INR 41,479.81 is 5.9x the average INR 7,004.51 of 17 previous completed transactions (threshold 5x)",Low,Dismissed,2026-01-25T10:23:46,640,1
+62,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2026-02-02T17:39:29,658,2
+63,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Resolved,2026-02-02T17:39:56,659,6
+64,"Unusual Transaction Amount: INR 1,67,656.62 is 9.9x the average INR 16,894.94 of 16 previous completed transactions (threshold 5x)",Low,Dismissed,2026-02-10T15:16:18,669,1
+65,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2026-02-10T23:21:16,675,2
+66,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2026-02-15T07:52:39,683,2
+67,Rapid Transactions: 5 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2026-02-15T07:54:38,684,2
+68,"Unusual Transaction Amount: INR 60,376.35 is 7.3x the average INR 8,256.02 of 16 previous completed transactions (threshold 5x)",Low,Dismissed,2026-02-17T20:24:05,689,1
+69,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 7.3x the average of 16 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 689 after 10s (window 30s),Critical,Resolved,2026-02-17T20:27:50,690,6
+70,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Under Review,2026-02-18T13:36:45,694,6
+71,"Unusual Transaction Amount: INR 5,61,282.52 is 10.6x the average INR 53,111.11 of 18 previous completed transactions (threshold 5x)",Low,Open,2026-02-19T12:42:07,695,1
+72,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 10.6x the average of 18 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 695 after 18s (window 30s),Critical,Resolved,2026-02-19T12:45:33,696,6
+73,"Unusual Transaction Amount: INR 4,58,425.83 is 9.7x the average INR 47,190.94 of 15 previous completed transactions (threshold 5x)",Low,Dismissed,2026-02-20T09:35:19,698,1
+74,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2026-02-25T10:51:27,707,2
+75,"Unusual Transaction Amount: INR 6,417.97 is 9.3x the average INR 691.76 of 17 previous completed transactions (threshold 5x)",Low,Dismissed,2026-02-27T08:20:47,711,1
+76,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2026-03-01T22:46:50,716,6
+77,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 8.9x the average of 17 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 719 after 17s (window 30s),Critical,Resolved,2026-03-05T19:20:34,720,6
+78,"Unusual Transaction Amount: INR 2,32,682.68 is 8.9x the average INR 26,267.60 of 17 previous completed transactions (threshold 5x)",Low,Resolved,2026-03-05T19:23:04,719,1
+79,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Resolved,2026-03-14T02:53:19,733,6
+80,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2026-03-31T15:28:15,751,2
+81,"Unusual Transaction Amount: INR 1,05,693.40 is 6.9x the average INR 15,259.59 of 17 previous completed transactions (threshold 5x)",Low,Under Review,2026-04-07T12:18:59,755,1
+82,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2026-04-10T01:18:12,765,4
+83,Multiple-Rule Violation: 2 rules triggered - Rule 1 Unusual Transaction Amount: 9.1x the average of 17 prior completed (min 5x); Rule 5 Potential Duplicate Transaction: repeat of tx 770 after 6s (window 30s),Critical,Resolved,2026-04-12T13:36:13,771,6
+84,"Unusual Transaction Amount: INR 1,31,559.72 is 9.1x the average INR 14,456.12 of 17 previous completed transactions (threshold 5x)",Low,Dismissed,2026-04-12T13:36:56,770,1
+85,"Unusual Transaction Amount: INR 86,172.71 is 10.8x the average INR 7,958.66 of 14 previous completed transactions (threshold 5x)",Low,Open,2026-04-12T20:04:10,773,1
+86,"Unusual Transaction Amount: INR 40,091.14 is 9.6x the average INR 4,185.81 of 15 previous completed transactions (threshold 5x)",Low,Open,2026-04-21T21:07:33,784,1
+87,"Unusual Transaction Amount: INR 31,097.57 is 7.5x the average INR 4,156.32 of 16 previous completed transactions (threshold 5x)",Low,Open,2026-04-25T09:45:02,786,1
+88,"Unusual Transaction Amount: INR 1,09,390.62 is 10.0x the average INR 10,974.51 of 16 previous completed transactions (threshold 5x)",Low,Open,2026-04-30T19:57:59,790,1
+89,"Unusual Transaction Amount: INR 5,900.40 is 9.1x the average INR 645.33 of 17 previous completed transactions (threshold 5x)",Low,Dismissed,2026-05-06T16:58:11,797,1
+90,"Unusual Transaction Amount: INR 4,00,670.07 is 8.8x the average INR 45,290.39 of 15 previous completed transactions (threshold 5x)",Low,Dismissed,2026-05-11T15:44:56,801,1
+91,"Unusual Transaction Amount: INR 41,833.68 is 9.1x the average INR 4,615.33 of 14 previous completed transactions (threshold 5x)",Low,Under Review,2026-05-24T15:09:20,816,1
+92,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Resolved,2026-06-01T09:09:16,828,2
+93,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Resolved,2026-06-01T09:11:50,829,6
+94,Rapid Transactions: 5 transaction attempts within 60 seconds (threshold 4),Medium,Open,2026-06-06T22:31:01,840,2
+95,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2026-06-06T22:31:12,839,2
+96,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Open,2026-06-18T14:04:16,859,2
+97,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 4 Suspicious Withdrawal Pattern: 5 ATM attempts in 10 min (min 5),Critical,Dismissed,2026-06-18T14:06:27,860,6
+98,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Resolved,2026-07-19T01:07:36,892,4
+99,Suspicious Withdrawal Pattern: 5 ATM withdrawal attempts within 10 minutes (threshold 5),High,Open,2026-07-24T23:13:11,899,4
+100,Suspicious Withdrawal Pattern: 6 ATM withdrawal attempts within 10 minutes (threshold 5),High,Under Review,2026-07-24T23:15:07,900,4
+101,Potential Duplicate Transaction: same type and amount as transaction 908 repeated after 10 seconds (window 30 seconds),Low,Dismissed,2026-08-05T16:53:16,909,5
+102,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 4 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 4 failed in 60s (min 4),Critical,Under Review,2026-08-16T17:00:39,933,6
+103,Multiple-Rule Violation: 2 rules triggered - Rule 2 Rapid Transactions: 5 attempts in 60s (min 4); Rule 3 Repeated Failed Transactions: 5 failed in 60s (min 4),Critical,Under Review,2026-08-16T17:01:07,934,6
+104,Potential Duplicate Transaction: same type and amount as transaction 937 repeated after 11 seconds (window 30 seconds),Low,Open,2026-08-17T21:56:01,938,5
+105,Potential Duplicate Transaction: same type and amount as transaction 936 repeated after 7 seconds (window 30 seconds),Low,Under Review,2026-08-17T21:57:47,937,5
+106,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Open,2026-09-02T17:18:12,954,2
+107,Rapid Transactions: 5 transaction attempts within 60 seconds (threshold 4),Medium,Dismissed,2026-10-09T06:18:09,986,2
+108,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Under Review,2026-10-09T06:19:53,985,2
+109,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Under Review,2026-10-12T17:59:20,993,2
+110,Rapid Transactions: 4 transaction attempts within 60 seconds (threshold 4),Medium,Under Review,2026-10-12T23:16:04,997,2
+111,Rapid Transactions: 5 transaction attempts within 60 seconds (threshold 4),Medium,Under Review,2026-10-12T23:19:05,998,2
