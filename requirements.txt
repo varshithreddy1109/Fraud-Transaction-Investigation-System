@@ -1,4 +1,4 @@
 streamlit
-psycopg
+psycopg[binary]==3.3.6
 pandas
 python-dotenv
