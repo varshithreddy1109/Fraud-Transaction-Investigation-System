@@ -1,4 +1,5 @@
 from datetime import date, datetime, time as dtime
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import streamlit as st
@@ -235,7 +236,9 @@ def page_record():
         c5, c6 = st.columns(2)
         use_now = c5.checkbox("Use current date & time", value=True)
         d = c5.date_input("Date", value=date.today())
-        t = c6.time_input("Time", value=dtime(datetime.now().hour, datetime.now().minute), step=60)
+        IST = ZoneInfo("Asia/Kolkata")
+        now_ist = datetime.now(IST)
+        t = c6.time_input("Time", value=dtime(now_ist.hour, now_ist.minute), step=60)
         location = st.text_input("Location")
         description = st.text_input("Description")
         submitted = st.form_submit_button("Process transaction", type="primary")

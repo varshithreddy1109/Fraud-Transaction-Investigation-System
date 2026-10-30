@@ -1,5 +1,6 @@
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
+from zoneinfo import ZoneInfo
 
 import db
 
@@ -247,7 +248,8 @@ def do_transaction(acc_id, transaction_type, direction, amt,
     if direction not in db.TXN_DIRECTIONS:
         raise ValidationError(f"Direction must be one of {db.TXN_DIRECTIONS}.")
     val = _validate_amount(amt)
-    when = (txn_date or datetime.now()).replace(microsecond=0, tzinfo=None)
+    IST = ZoneInfo("Asia/Kolkata")
+    when = (txn_date or datetime.now(IST)).replace(microsecond=0, tzinfo=None)
     loc = (location or "").strip() or None
     desc = (description or "").strip() or None
 
