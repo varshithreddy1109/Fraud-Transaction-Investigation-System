@@ -1,6 +1,5 @@
 import os
 from contextlib import contextmanager
-from datetime import datetime
 from decimal import Decimal
 
 from dotenv import load_dotenv
@@ -24,10 +23,6 @@ class DatabaseConnectionError(RuntimeError):
     pass
 
 
-class KeyGenerationError(RuntimeError):
-    pass
-
-
 PK = {
     "customer": "customer_id",
     "department": "department_id",
@@ -41,33 +36,6 @@ PK = {
     "evidence": "evidence_id",
 }
 TABLES = list(PK)
-
-EXPECTED_COLUMNS = {
-    "customer": ["customer_id", "name", "address", "phone", "date_of_birth", "email", "created_at"],
-    "department": ["department_id", "department_name", "description"],
-    "fraud_type": ["fraud_type_id", "fraud_type_name", "description", "severity", "department_id", "is_active"],
-    "investigator": ["investigator_id", "name", "email", "phone", "experience_year", "department_id"],
-    "account": ["account_id", "account_number", "account_type", "balance", "opened_date", "status", "customer_id"],
-    "transactions": ["transaction_id", "transaction_type", "transaction_direction", "amount", "transaction_date",
-                     "status", "location", "description", "failure_reason", "account_id"],
-    "fraud_alert": ["alert_id", "reason", "severity", "status", "alert_date", "transaction_id", "fraud_type_id"],
-    "investigation": ["investigation_id", "start_date", "end_date", "status", "findings", "alert_id", "investigator_id"],
-    "fraud_case": ["case_id", "priority", "case_date", "closed_date", "status", "investigation_id"],
-    "evidence": ["evidence_id", "evidence_type", "description", "submitted_date", "case_id"],
-}
-
-FOREIGN_KEYS = [
-    ("account", "customer_id", "customer", "customer_id"),
-    ("transactions", "account_id", "account", "account_id"),
-    ("fraud_alert", "transaction_id", "transactions", "transaction_id"),
-    ("fraud_alert", "fraud_type_id", "fraud_type", "fraud_type_id"),
-    ("fraud_type", "department_id", "department", "department_id"),
-    ("investigator", "department_id", "department", "department_id"),
-    ("investigation", "alert_id", "fraud_alert", "alert_id"),
-    ("investigation", "investigator_id", "investigator", "investigator_id"),
-    ("fraud_case", "investigation_id", "investigation", "investigation_id"),
-    ("evidence", "case_id", "fraud_case", "case_id"),
-]
 
 SEVERITIES = ("Low", "Medium", "High", "Critical")
 ALERT_STATUSES = ("Open", "Under Review", "Resolved", "Dismissed")
@@ -132,118 +100,14 @@ def _one(cur, query, params=()):
 
 def _insert(cur, table, values):
     pk = PK[table]
-    if pk in values:
-        raise ValueError(f"Refusing to insert an explicit primary key into {table}.")
     query = sql.SQL("INSERT INTO {t} ({c}) VALUES ({v}) RETURNING {pk}").format(
         t=sql.Identifier(table),
         c=sql.SQL(", ").join(map(sql.Identifier, values)),
         v=sql.SQL(", ").join(sql.Placeholder() * len(values)),
         pk=sql.Identifier(pk),
     )
-    try:
-        cur.execute(query, list(values.values()))
-    except psycopg.errors.NotNullViolation as exc:
-        if exc.diag.column_name == pk:
-            raise KeyGenerationError(
-                f"Table '{table}' has no default for '{pk}'. Check check_seqs()."
-            ) from None
-        raise
-    except psycopg.errors.UniqueViolation as exc:
-        if (exc.diag.constraint_name or "").endswith("_pkey"):
-            raise KeyGenerationError(
-                f"The generator for '{table}.{pk}' created an existing key. Run check_seqs() to sync."
-            ) from None
-        raise
+    cur.execute(query, list(values.values()))
     return cur.fetchone()[pk]
-
-
-def verify_schema(cur=None):
-    with _cur(cur) as c:
-        rows = _all(c, "SELECT table_name, column_name FROM information_schema.columns "
-                       "WHERE table_schema = 'public'")
-    have = {(r["table_name"].lower(), r["column_name"].lower()) for r in rows}
-    missing = [f"{t}.{col}" for t, cols in EXPECTED_COLUMNS.items() for col in cols if (t, col) not in have]
-    return {"missing": missing, "ok": len(missing) == 0}
-
-
-def check_seqs(cur=None):
-    out = []
-    with _cur(cur) as c:
-        meta = _all(c, """
-            SELECT cl.relname AS table_name, a.attname AS column_name, a.attidentity AS identity,
-                   pg_get_expr(d.adbin, d.adrelid) AS column_default,
-                   pg_get_serial_sequence(format('%%I.%%I', n.nspname, cl.relname), a.attname) AS sequence_name
-            FROM pg_index i
-            JOIN pg_class cl ON cl.oid = i.indrelid
-            JOIN pg_namespace n ON n.oid = cl.relnamespace
-            JOIN pg_attribute a ON a.attrelid = cl.oid AND a.attnum = ANY (i.indkey)
-            LEFT JOIN pg_attrdef d ON d.adrelid = cl.oid AND d.adnum = a.attnum
-            WHERE i.indisprimary AND n.nspname = 'public'
-        """)
-        by_table = {m["table_name"].lower(): m for m in meta}
-        for table in TABLES:
-            m = by_table.get(table)
-            pk = PK[table]
-            row = _one(c, sql.SQL("SELECT MAX({pk}) AS m FROM {t}").format(
-                pk=sql.Identifier(pk), t=sql.Identifier(table)))
-            max_id = row["m"] if row else None
-            if not m:
-                out.append({
-                    "table": table,
-                    "pk_column": pk,
-                    "mechanism": "NO PRIMARY KEY FOUND",
-                    "sequence": None,
-                    "max_id": max_id,
-                    "next_id": None,
-                    "in_sync": False,
-                })
-                continue
-            if m["identity"] == "a":
-                mech = "IDENTITY ALWAYS"
-            elif m["identity"] == "d":
-                mech = "IDENTITY BY DEFAULT"
-            elif m["column_default"] and "nextval" in m["column_default"]:
-                mech = "SEQUENCE DEFAULT"
-            elif m["column_default"]:
-                mech = "OTHER DEFAULT"
-            else:
-                mech = "NONE (plain INT; PostgreSQL cannot generate keys)"
-            seq = m["sequence_name"]
-            next_id = None
-            in_sync = False
-            if seq:
-                schema, _, name = seq.partition(".")
-                s = _one(c, "SELECT last_value, start_value, increment_by FROM pg_sequences "
-                            "WHERE schemaname = %s AND sequencename = %s", (schema, name))
-                if s:
-                    if s["last_value"] is not None:
-                        next_id = s["last_value"] + s["increment_by"]
-                    else:
-                        next_id = s["start_value"]
-                    in_sync = (max_id is None) or (next_id > max_id)
-            out.append({
-                "table": table,
-                "pk_column": pk,
-                "mechanism": mech,
-                "sequence": seq,
-                "max_id": max_id,
-                "next_id": next_id,
-                "in_sync": in_sync,
-            })
-    return out
-
-
-def check_fks(cur=None):
-    out = []
-    with _cur(cur) as c:
-        for child, ccol, parent, pcol in FOREIGN_KEYS:
-            q = sql.SQL("SELECT COUNT(*) AS n FROM {c} ch LEFT JOIN {p} pa ON pa.{pc} = ch.{cc} "
-                        "WHERE ch.{cc} IS NOT NULL AND pa.{pc} IS NULL").format(
-                c=sql.Identifier(child), p=sql.Identifier(parent),
-                cc=sql.Identifier(ccol), pc=sql.Identifier(pcol))
-            n = _one(c, q)["n"]
-            out.append({"relationship": f"{child}.{ccol} -> {parent}.{pcol}", "orphans": n, "ok": n == 0})
-    return out
 
 
 def table_counts(cur=None):
@@ -369,11 +233,9 @@ def list_accounts(customer_id=None, status=None, cur=None):
         return _all(c, q, (customer_id, customer_id, status, status))
 
 
-def get_account(acc_id, for_update=False, cur=None):
+def get_account(acc_id, cur=None):
     q = (f"SELECT {_ACC_COLS} FROM account a JOIN customer c ON c.customer_id = a.customer_id "
          "WHERE a.account_id = %s")
-    if for_update:
-        q += " FOR UPDATE OF a"
     with _cur(cur) as c:
         return _one(c, q, (acc_id,))
 
@@ -502,10 +364,8 @@ def insert_alert(txn_id, fraud_type_id, severity, reason, status="Open", cur=Non
                                           "transaction_id": txn_id, "fraud_type_id": fraud_type_id})
 
 
-def get_alert(alert_id, for_update=False, cur=None):
+def get_alert(alert_id, cur=None):
     q = f"SELECT {_ALERT_COLS} {_ALERT_FROM} WHERE fa.alert_id = %s"
-    if for_update:
-        q += " FOR UPDATE OF fa"
     with _cur(cur) as c:
         return _one(c, q, (alert_id,))
 
@@ -574,10 +434,8 @@ def insert_investigation(alert_id, investigator_id, status="Ongoing", cur=None):
                                             "status": status})
 
 
-def get_investigation(investigation_id, for_update=False, cur=None):
+def get_investigation(investigation_id, cur=None):
     q = f"SELECT {_INV_COLS} {_INV_FROM} WHERE inv.investigation_id = %s"
-    if for_update:
-        q += " FOR UPDATE OF inv"
     with _cur(cur) as c:
         return _one(c, q, (investigation_id,))
 
@@ -638,10 +496,8 @@ def insert_case(investigation_id, priority, status="Open", cur=None):
                                          "status": status})
 
 
-def get_case(case_id, for_update=False, cur=None):
+def get_case(case_id, cur=None):
     q = f"SELECT {_CASE_COLS} {_CASE_FROM} WHERE fc.case_id = %s"
-    if for_update:
-        q += " FOR UPDATE OF fc"
     with _cur(cur) as c:
         return _one(c, q, (case_id,))
 

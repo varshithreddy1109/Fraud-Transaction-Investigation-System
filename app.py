@@ -80,9 +80,6 @@ def run(action, success=None):
     except logic.ValidationError as exc:
         st.error(str(exc))
         return None
-    except db.KeyGenerationError as exc:
-        st.error(f"Primary-key generation problem: {exc}")
-        return None
     except Exception as exc:
         st.error(f"Operation failed and was rolled back: {exc.__class__.__name__}: {exc}")
         return None
@@ -94,29 +91,6 @@ def run(action, success=None):
 def account_label(a):
     return f"{a['account_number']} - {a['customer_name']} - {a['status']} - bal {money(a['balance'])}"
 
-
-@st.cache_data(show_spinner=False)
-def _cached_verify_schema():
-    return db.verify_schema()
-
-
-try:
-    schema_check = _cached_verify_schema()
-except db.DatabaseConnectionError as exc:
-    _cached_verify_schema.clear()
-    st.error("Cannot connect to the database.")
-    st.code(str(exc), language="text")
-    st.stop()
-except Exception as exc:
-    _cached_verify_schema.clear()
-    st.error(f"Database check failed: {exc.__class__.__name__}: {exc}")
-    st.stop()
-
-if not schema_check["ok"]:
-    _cached_verify_schema.clear()
-    st.error("The connected database is missing columns this application uses:")
-    st.code("\n".join(schema_check["missing"]), language="text")
-    st.stop()
 
 PAGES = ["Dashboard", "Record a Transaction", "Transactions History", "Fraud Alerts",
          "Investigations & Workload", "Cases & Evidence", "Reference Data"]
@@ -497,8 +471,7 @@ def page_cases():
 
 
 def page_reference():
-    tabs = st.tabs(["Customers", "Accounts", "Departments", "Fraud types", "Investigators",
-                    "Fraud rule configuration", "Database health"])
+    tabs = st.tabs(["Customers", "Accounts", "Departments", "Fraud types", "Investigators"])
     depts = db.list_departments()
 
     with tabs[0]:
@@ -599,61 +572,6 @@ def page_reference():
                     if new:
                         flash("success", f"Investigator created with ID {new}.")
                         st.rerun()
-
-    with tabs[5]:
-        render_rule_config(db.list_fraud_types())
-
-    with tabs[6]:
-        render_health()
-
-
-def render_rule_config(fts):
-    st.markdown("Items marked **AWAITING CONFIRMATION / PENDING** are not guessed: the affected rule is "
-                "skipped (and reported as not evaluated) until you set it.")
-    table(logic.config_status(), {"item": "Item", "status": "Status", "detail": "Detail"})
-    cfg = logic.get_config()
-    st.markdown("**Observed transaction types in the database** (use these to choose withdrawal types)")
-    table(db.distinct_transaction_types(), {"transaction_type": "Type", "transaction_direction": "Direction", "n": "Rows"})
-    known_types = sorted({r["transaction_type"] for r in db.distinct_transaction_types()})
-    with st.form("rule_cfg"):
-        mult = st.text_input("High-amount multiplier (x personal average)",
-                             value="" if cfg["high_amount_multiplier"] is None else str(cfg["high_amount_multiplier"]),
-                             help="Leave blank until confirmed - rule 1 is skipped while blank.")
-        wd = st.multiselect("Withdrawal transaction types", known_types,
-                            default=[t for t in cfg["withdrawal_types"] if t in known_types])
-        sev = st.selectbox("Combined (multiple-rule) severity", list(db.SEVERITIES),
-                           index=db.SEVERITIES.index(cfg["combined_severity"]))
-        options = [None] + fts
-        mapping = {}
-        for rule in logic.RULES + ["MULTIPLE"]:
-            cur_id = cfg["rule_fraud_type_ids"].get(rule)
-            idx = next((i for i, f in enumerate(options) if f and f["fraud_type_id"] == cur_id), 0)
-            choice = st.selectbox(f"Fraud type for: {logic.RULE_LABELS[rule]}", options, index=idx,
-                                  format_func=lambda f: "- not mapped -" if f is None else
-                                  f"#{f['fraud_type_id']} {f['fraud_type_name']} ({f['severity']}, "
-                                  f"{'active' if f['is_active'] else 'inactive'})", key=f"map_{rule}")
-            mapping[rule] = choice["fraud_type_id"] if choice else None
-        if st.form_submit_button("Save rule configuration"):
-            if run(lambda: logic.save_config(mult or None, wd, sev, mapping, cfg["auto_open_investigation"]),
-                   "Rule configuration saved to rule_config.json."):
-                st.rerun()
-
-
-def render_health():
-    st.markdown("**Primary-key generation** (from the PostgreSQL catalog)")
-    report = db.check_seqs()
-    table(report, {"table": "Table", "pk_column": "PK", "mechanism": "Mechanism", "sequence": "Sequence",
-                   "max_id": "Max ID", "next_id": "Next ID", "in_sync": "In sync"})
-    bad = [r for r in report if r["mechanism"].startswith("NONE") or not r["in_sync"]]
-    if bad:
-        st.warning("Some tables cannot generate keys automatically or their generator is behind the data. "
-                   "Inserts into those tables will fail with a clear error. A schema/sequence change needs "
-                   "your approval - nothing has been changed.")
-    st.markdown("**Foreign-key integrity**")
-    table(db.check_fks(), {"relationship": "Relationship", "orphans": "Orphan rows", "ok": "OK"})
-    st.markdown("**Row counts**")
-    st.dataframe(pd.DataFrame([db.table_counts()]), hide_index=True, width="stretch")
-
 
 PAGE_FUNCS = {
     "Dashboard": page_dashboard, "Record a Transaction": page_record, "Transactions History": page_history,

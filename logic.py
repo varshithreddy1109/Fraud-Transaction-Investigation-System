@@ -1,7 +1,5 @@
-import json
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
-from pathlib import Path
 
 import db
 
@@ -15,20 +13,18 @@ WITHDRAWAL_WINDOW_SECONDS = 600
 DUPLICATE_WINDOW_SECONDS = 30
 COMBINED_MIN_RULES = 2
 
-HIGH_AMOUNT_MULTIPLIER = None
-WITHDRAWAL_TYPES = ()
+HIGH_AMOUNT_MULTIPLIER = Decimal("3.0")
+WITHDRAWAL_TYPES = ("ATM Withdrawal", "Bill Payment", "Card Payment", "Cash Deposit",
+                    "IMPS", "NEFT", "Net Banking", "Online Payment", "RTGS", "UPI")
 COMBINED_SEVERITY = "Critical"
 RULE_FRAUD_TYPE_IDS = {
-    "HIGH_AMOUNT": None,
-    "RAPID": None,
-    "REPEATED_FAILED": None,
-    "SUSPICIOUS_WITHDRAWALS": None,
-    "DUPLICATE": None,
-    "MULTIPLE": None,
+    "HIGH_AMOUNT": 1,
+    "RAPID": 2,
+    "REPEATED_FAILED": 3,
+    "SUSPICIOUS_WITHDRAWALS": 4,
+    "DUPLICATE": 5,
+    "MULTIPLE": 6,
 }
-AUTO_OPEN_INVESTIGATION = False
-
-CONFIG_FILE = Path(__file__).with_name("rule_config.json")
 
 RULES = ["HIGH_AMOUNT", "RAPID", "REPEATED_FAILED", "SUSPICIOUS_WITHDRAWALS", "DUPLICATE"]
 RULE_LABELS = {
@@ -70,96 +66,6 @@ class ValidationError(ValueError):
     pass
 
 
-def get_config():
-    cfg = {
-        "high_amount_multiplier": HIGH_AMOUNT_MULTIPLIER,
-        "withdrawal_types": list(WITHDRAWAL_TYPES),
-        "combined_severity": COMBINED_SEVERITY,
-        "rule_fraud_type_ids": dict(RULE_FRAUD_TYPE_IDS),
-        "auto_open_investigation": AUTO_OPEN_INVESTIGATION,
-    }
-    if CONFIG_FILE.exists():
-        saved = json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
-        if saved.get("high_amount_multiplier") is not None:
-            cfg["high_amount_multiplier"] = Decimal(str(saved["high_amount_multiplier"]))
-        if "withdrawal_types" in saved:
-            cfg["withdrawal_types"] = list(saved["withdrawal_types"])
-        if saved.get("combined_severity"):
-            cfg["combined_severity"] = saved["combined_severity"]
-        if "rule_fraud_type_ids" in saved:
-            cfg["rule_fraud_type_ids"].update(saved["rule_fraud_type_ids"])
-        if "auto_open_investigation" in saved:
-            cfg["auto_open_investigation"] = bool(saved["auto_open_investigation"])
-    if cfg["high_amount_multiplier"] is not None:
-        cfg["high_amount_multiplier"] = Decimal(str(cfg["high_amount_multiplier"]))
-    return cfg
-
-
-def save_config(high_amount_multiplier, withdrawal_types, combined_severity, rule_fraud_type_ids,
-                auto_open_investigation=False):
-    mult = None
-    if high_amount_multiplier not in (None, ""):
-        try:
-            mult = Decimal(str(high_amount_multiplier))
-        except InvalidOperation:
-            raise ValidationError("Multiplier must be a number.") from None
-        if mult <= 0:
-            raise ValidationError("Multiplier must be greater than zero.")
-    if combined_severity not in db.SEVERITIES:
-        raise ValidationError(f"Combined severity must be one of {db.SEVERITIES}.")
-    known = {ft["fraud_type_id"] for ft in db.list_fraud_types()}
-    mapping = {}
-    for rule in list(RULES) + ["MULTIPLE"]:
-        ftid = (rule_fraud_type_ids or {}).get(rule)
-        if ftid is not None and ftid not in known:
-            raise ValidationError(f"fraud_type_id {ftid} for {RULE_LABELS[rule]} does not exist.")
-        mapping[rule] = ftid
-    used = [v for v in mapping.values() if v is not None]
-    if len(used) != len(set(used)):
-        raise ValidationError("Each rule must map to a different fraud type.")
-    payload = {
-        "high_amount_multiplier": str(mult) if mult is not None else None,
-        "withdrawal_types": sorted({w.strip() for w in (withdrawal_types or []) if w and w.strip()}),
-        "combined_severity": combined_severity,
-        "rule_fraud_type_ids": mapping,
-        "auto_open_investigation": bool(auto_open_investigation),
-    }
-    CONFIG_FILE.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    return get_config()
-
-
-def config_status(cfg=None):
-    cfg = cfg or get_config()
-    fts = {ft["fraud_type_id"]: ft for ft in db.list_fraud_types()}
-    out = []
-    mult = cfg["high_amount_multiplier"]
-    out.append({"item": "High-amount multiplier", "status": "Set" if mult else "AWAITING CONFIRMATION",
-                "detail": f"{mult}x personal average" if mult else "Rule 1 will not be evaluated."})
-    wt = cfg["withdrawal_types"]
-    out.append({"item": "Withdrawal transaction types", "status": "Set" if wt else "PENDING DB VERIFICATION",
-                "detail": ", ".join(wt) if wt else "Rule 4 will not be evaluated."})
-    out.append({"item": "Combined severity", "status": "Provisional", "detail": cfg["combined_severity"]})
-    for rule in RULES + ["MULTIPLE"]:
-        ftid = cfg["rule_fraud_type_ids"].get(rule)
-        ft = fts.get(ftid)
-        if ft is None:
-            out.append({"item": f"Fraud type for: {RULE_LABELS[rule]}", "status": "NOT MAPPED",
-                        "detail": "No alert can be raised for this rule."})
-        else:
-            out.append({"item": f"Fraud type for: {RULE_LABELS[rule]}",
-                        "status": "Mapped" if ft["is_active"] else "Mapped but INACTIVE",
-                        "detail": f"#{ft['fraud_type_id']} {ft['fraud_type_name']} ({ft['severity']})"})
-    return out
-
-
-def duplicate_match_criteria(txn):
-    return {
-        "transaction_type": txn["transaction_type"],
-        "direction": txn["transaction_direction"],
-        "amount": txn["amount"]
-    }
-
-
 def _result(rule, evaluated, triggered=False, reason="", note=""):
     return {
         "rule": rule,
@@ -171,10 +77,7 @@ def _result(rule, evaluated, triggered=False, reason="", note=""):
     }
 
 
-def _rule_high_amount(cur, txn, cfg):
-    mult = cfg["high_amount_multiplier"]
-    if mult is None:
-        return _result("HIGH_AMOUNT", False, note="multiplier awaiting confirmation")
+def _rule_high_amount(cur, txn):
     if txn["status"] != "Completed":
         return _result("HIGH_AMOUNT", True, note="only Completed transactions are checked")
     hist = db.get_user_history(txn["account_id"], txn["transaction_date"], txn["transaction_id"], cur=cur)
@@ -182,15 +85,15 @@ def _rule_high_amount(cur, txn, cfg):
         return _result("HIGH_AMOUNT", True,
                        note=f"only {hist['n']} completed historical transactions (need {MIN_HISTORY_FOR_HIGH_AMOUNT})")
     avg = Decimal(hist["avg_amount"])
-    limit = avg * mult
+    limit = avg * HIGH_AMOUNT_MULTIPLIER
     if txn["amount"] > limit:
         return _result("HIGH_AMOUNT", True, True,
-                       f"Amount {txn['amount']:,.2f} exceeds {mult}x the account's average completed amount "
+                       f"Amount {txn['amount']:,.2f} exceeds {HIGH_AMOUNT_MULTIPLIER}x the account's average completed amount "
                        f"({avg:,.2f}, {hist['n']} transactions)")
     return _result("HIGH_AMOUNT", True, note=f"amount {txn['amount']:,.2f} <= {limit:,.2f}")
 
 
-def _rule_rapid(cur, txn, cfg):
+def _rule_rapid(cur, txn):
     if txn["status"] != "Completed":
         return _result("RAPID", True, note="current transaction is not Completed")
     prior = db.count_in_window(txn["account_id"], txn["transaction_date"], RAPID_WINDOW_SECONDS, "Completed",
@@ -202,7 +105,7 @@ def _rule_rapid(cur, txn, cfg):
     return _result("RAPID", True, note=f"{total} in {RAPID_WINDOW_SECONDS}s (< {RAPID_MIN_COUNT})")
 
 
-def _rule_repeated_failed(cur, txn, cfg):
+def _rule_repeated_failed(cur, txn):
     if txn["status"] != "Failed":
         return _result("REPEATED_FAILED", True, note="current transaction is not Failed")
     prior = db.count_in_window(txn["account_id"], txn["transaction_date"], FAILED_WINDOW_SECONDS, "Failed",
@@ -214,14 +117,11 @@ def _rule_repeated_failed(cur, txn, cfg):
     return _result("REPEATED_FAILED", True, note=f"{total} failed in {FAILED_WINDOW_SECONDS}s (< {FAILED_MIN_COUNT})")
 
 
-def _rule_withdrawals(cur, txn, cfg):
-    types = cfg["withdrawal_types"]
-    if not types:
-        return _result("SUSPICIOUS_WITHDRAWALS", False, note="withdrawal transaction types pending verification")
-    if txn["status"] != "Completed" or txn["transaction_direction"] != "Sent" or txn["transaction_type"] not in types:
+def _rule_withdrawals(cur, txn):
+    if txn["status"] != "Completed" or txn["transaction_direction"] != "Sent" or txn["transaction_type"] not in WITHDRAWAL_TYPES:
         return _result("SUSPICIOUS_WITHDRAWALS", True, note="current transaction is not a completed withdrawal")
     prior = db.count_in_window(txn["account_id"], txn["transaction_date"], WITHDRAWAL_WINDOW_SECONDS, "Completed",
-                               exclude_txn_id=txn["transaction_id"], direction="Sent", types=types, cur=cur)
+                               exclude_txn_id=txn["transaction_id"], direction="Sent", types=WITHDRAWAL_TYPES, cur=cur)
     total = prior + 1
     if total >= WITHDRAWAL_MIN_COUNT:
         return _result("SUSPICIOUS_WITHDRAWALS", True, True,
@@ -231,14 +131,13 @@ def _rule_withdrawals(cur, txn, cfg):
                    note=f"{total} withdrawals in {WITHDRAWAL_WINDOW_SECONDS // 60} min (< {WITHDRAWAL_MIN_COUNT})")
 
 
-def _rule_duplicate(cur, txn, cfg):
-    crit = duplicate_match_criteria(txn)
+def _rule_duplicate(cur, txn):
     n = db.count_matching_in_window(txn["account_id"], txn["transaction_date"], DUPLICATE_WINDOW_SECONDS,
-                                    crit["transaction_type"], crit["direction"], crit["amount"],
+                                    txn["transaction_type"], txn["transaction_direction"], txn["amount"],
                                     txn["transaction_id"], cur=cur)
     if n >= 1:
         return _result("DUPLICATE", True, True,
-                       f"Same {crit['transaction_type']} ({crit['direction']}) of {crit['amount']:,.2f} "
+                       f"Same {txn['transaction_type']} ({txn['transaction_direction']}) of {txn['amount']:,.2f} "
                        f"seen {n} time(s) in the previous {DUPLICATE_WINDOW_SECONDS}s")
     return _result("DUPLICATE", True, note=f"no matching transaction in {DUPLICATE_WINDOW_SECONDS}s")
 
@@ -258,18 +157,17 @@ def _truncate(text, n=255):
     return text[: n - 1] + "…"
 
 
-def run_fraud_rules(cur, txn, cfg=None, fraud_types=None):
-    cfg = cfg or get_config()
+def run_fraud_rules(cur, txn, fraud_types=None):
     fts = fraud_types if fraud_types is not None else {ft["fraud_type_id"]: ft for ft in db.list_fraud_types(cur=cur)}
     results = []
     for rule in RULES:
-        ft = fts.get(cfg["rule_fraud_type_ids"].get(rule))
+        ft = fts.get(RULE_FRAUD_TYPE_IDS.get(rule))
         if ft is None:
             res = _result(rule, False, note="no fraud type mapped to this rule")
         elif not ft["is_active"]:
             res = _result(rule, False, note=f"fraud type '{ft['fraud_type_name']}' is inactive")
         else:
-            res = _RULE_FUNCS[rule](cur, txn, cfg)
+            res = _RULE_FUNCS[rule](cur, txn)
         res["fraud_type"] = ft
         results.append(res)
     triggered = [r for r in results if r["triggered"]]
@@ -290,8 +188,7 @@ def screen_txn(txn_id, cur=None):
         return {"transaction_id": txn_id, "alert": existing, "created": False, "rules": [],
                 "triggered": [], "combined": False, "warnings": ["Transaction was already screened."]}
 
-    cfg = get_config()
-    ev = run_fraud_rules(cur, txn, cfg)
+    ev = run_fraud_rules(cur, txn)
     skipped = [r for r in ev["rules"] if not r["evaluated"]]
     for r in skipped:
         warnings.append(f"{r['label']} not evaluated: {r['note']}.")
@@ -302,13 +199,13 @@ def screen_txn(txn_id, cur=None):
         fts = ev["fraud_types"]
         use_combined, ft, severity = False, None, None
         if ev["combined"]:
-            cft = fts.get(cfg["rule_fraud_type_ids"].get("MULTIPLE"))
+            cft = fts.get(RULE_FRAUD_TYPE_IDS.get("MULTIPLE"))
             if cft is not None and cft["is_active"]:
-                use_combined, ft, severity = True, cft, cfg["combined_severity"]
+                use_combined, ft, severity = True, cft, COMBINED_SEVERITY
             else:
                 why = "not mapped" if cft is None else "inactive"
                 warnings.append(f"Multiple-rule violation fraud type is {why}; alert recorded under the "
-                                f"highest-severity individual rule instead.")
+                                 f"highest-severity individual rule instead.")
         if not use_combined:
             best = max(triggered, key=lambda r: (SEVERITY_RANK[r["fraud_type"]["severity"]], -RULES.index(r["rule"])))
             ft, severity = best["fraud_type"], best["fraud_type"]["severity"]
@@ -324,7 +221,6 @@ def screen_txn(txn_id, cur=None):
     return {"transaction_id": txn_id, "alert": alert, "created": alert is not None,
             "rules": ev["rules"], "triggered": [r["rule"] for r in triggered],
             "combined": ev["combined"], "warnings": warnings}
-
 
 def _validate_amount(amt):
     try:
@@ -356,7 +252,7 @@ def do_transaction(acc_id, transaction_type, direction, amt,
     desc = (description or "").strip() or None
 
     with db.transaction() as cur:
-        account = db.get_account(acc_id, for_update=True, cur=cur)
+        account = db.get_account(acc_id, cur=cur)
         if account is None:
             raise ValidationError(f"Account {acc_id} does not exist.")
         if account["status"] != "Active":
@@ -413,7 +309,7 @@ def preview_assignment(alert_id):
 
 def open_investigation(alert_id):
     with db.transaction() as cur:
-        alert = db.get_alert(alert_id, for_update=True, cur=cur)
+        alert = db.get_alert(alert_id, cur=cur)
         if alert is None:
             raise ValidationError(f"Alert {alert_id} does not exist.")
         if alert["status"] in ("Resolved", "Dismissed"):
@@ -440,7 +336,7 @@ def complete_investigation(investigation_id, findings):
     if not findings:
         raise ValidationError("Findings are required to complete an investigation.")
     with db.transaction() as cur:
-        inv = db.get_investigation(investigation_id, for_update=True, cur=cur)
+        inv = db.get_investigation(investigation_id, cur=cur)
         if inv is None:
             raise ValidationError(f"Investigation {investigation_id} does not exist.")
         _check_transition(INVESTIGATION_TRANSITIONS, inv["status"], "Completed", "Investigation")
@@ -450,7 +346,7 @@ def complete_investigation(investigation_id, findings):
 
 def close_investigation(investigation_id, findings=None):
     with db.transaction() as cur:
-        inv = db.get_investigation(investigation_id, for_update=True, cur=cur)
+        inv = db.get_investigation(investigation_id, cur=cur)
         if inv is None:
             raise ValidationError(f"Investigation {investigation_id} does not exist.")
         _check_transition(INVESTIGATION_TRANSITIONS, inv["status"], "Closed", "Investigation")
@@ -465,7 +361,7 @@ def update_alert_status(alert_id, new_status):
     if new_status not in db.ALERT_STATUSES:
         raise ValidationError(f"Unknown alert status '{new_status}'.")
     with db.transaction() as cur:
-        alert = db.get_alert(alert_id, for_update=True, cur=cur)
+        alert = db.get_alert(alert_id, cur=cur)
         if alert is None:
             raise ValidationError(f"Alert {alert_id} does not exist.")
         _check_transition(ALERT_TRANSITIONS, alert["status"], new_status, "Alert")
@@ -475,7 +371,7 @@ def update_alert_status(alert_id, new_status):
 
 def open_case(investigation_id, priority=None):
     with db.transaction() as cur:
-        inv = db.get_investigation(investigation_id, for_update=True, cur=cur)
+        inv = db.get_investigation(investigation_id, cur=cur)
         if inv is None:
             raise ValidationError(f"Investigation {investigation_id} does not exist.")
         if inv["status"] == "Closed":
@@ -491,7 +387,7 @@ def open_case(investigation_id, priority=None):
 
 def escalate_case(case_id):
     with db.transaction() as cur:
-        case = db.get_case(case_id, for_update=True, cur=cur)
+        case = db.get_case(case_id, cur=cur)
         if case is None:
             raise ValidationError(f"Case {case_id} does not exist.")
         _check_transition(CASE_TRANSITIONS, case["status"], "Escalated", "Case")
@@ -501,7 +397,7 @@ def escalate_case(case_id):
 
 def close_case(case_id):
     with db.transaction() as cur:
-        case = db.get_case(case_id, for_update=True, cur=cur)
+        case = db.get_case(case_id, cur=cur)
         if case is None:
             raise ValidationError(f"Case {case_id} does not exist.")
         _check_transition(CASE_TRANSITIONS, case["status"], "Closed", "Case")
@@ -516,7 +412,7 @@ def attach_evidence(case_id, evidence_type, description=None):
     if len(etype) > 50:
         raise ValidationError("Evidence type must be at most 50 characters.")
     with db.transaction() as cur:
-        case = db.get_case(case_id, for_update=True, cur=cur)
+        case = db.get_case(case_id, cur=cur)
         if case is None:
             raise ValidationError(f"Case {case_id} does not exist.")
         if case["status"] == "Closed":
